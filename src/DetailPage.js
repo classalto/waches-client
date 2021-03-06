@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getItem, updateItem } from './dataUtils.js';
+import { getItem, updateItem, deleteItem } from './dataUtils.js';
 
 export default class DetailPage extends Component {
     state = {
@@ -61,7 +61,7 @@ export default class DetailPage extends Component {
     }
 
 
-    handleDelete = (e) => {
+    handleDelete = async (e) => {
         e.preventDefault();
         await deleteItem(this.props.match.params.watchId)
     }
