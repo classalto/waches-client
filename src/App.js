@@ -12,8 +12,8 @@ import Header from './Header.js';
 function App() {
   return (
     <div>
-      <Header/>
       <Router>
+      <Header/>
         <Switch>
           <Route
             path="/"
