@@ -6,7 +6,6 @@ import {BrowserRouter as Router,
 import CreatePage from './CreatePage.js';
 import DetailPage from './DetailPage.js';
 import ListPage from './ListPage.js';
-import HomePage from './HomePage.js';
 import Header from './Header.js';
 
 function App() {
