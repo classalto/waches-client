@@ -16,11 +16,6 @@ function App() {
       <Header/>
         <Switch>
           <Route
-            path="/"
-            exact
-            component={HomePage}
-          />
-          <Route
             path="/watches"
             exact
             component={ListPage}
@@ -35,6 +30,11 @@ function App() {
             exact
             component={CreatePage}
           />
+      <Route
+        path="/"
+        exact
+        component={HomePage}
+      />
         </Switch>
       </Router>
     </div>
