@@ -1,6 +1,6 @@
 import request from "superagent";
 
-const URL = 'https://enigmatic-basin-62953.herokuapp.com';
+const URL = 'https://boiling-journey-60335.herokuapp.com';
 
 export async function getItem(watchId) {
     const { body } = await request.get(`${URL}/watches/${watchId}`);

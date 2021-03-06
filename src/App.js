@@ -7,7 +7,6 @@ import CreatePage from './CreatePage.js';
 import DetailPage from './DetailPage.js';
 import ListPage from './ListPage.js';
 import Header from './Header.js';
-import HomePage from './HomePage.js';
 
 function App() {
   return (
@@ -30,11 +29,6 @@ function App() {
             exact
             component={CreatePage}
           />
-      <Route
-        path="/"
-        exact
-        component={HomePage}
-      />
         </Switch>
       </Router>
     </div>
