@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { updateItem } from './dataUtils.js';
-import Header from './Header.js';
+import { getItem, updateItem } from './dataUtils.js';
 
 export default class DetailPage extends Component {
     state = {
-        brands: [],
         brand_id: 1,
         name: '',
         limited: false,
@@ -12,6 +10,20 @@ export default class DetailPage extends Component {
         price: 0,
         image: '',
         description: '',
+    }
+
+    componentDidMount = async () => {
+        const watch = await getItem(this.props.match.params.watchId);
+        this.setState({
+            brand_id: watch.brand_id,
+            name: watch.name,
+            limited: watch.limited,
+            diameter_mm: watch.diameter_mm,
+            price: watch.price,
+            image: watch.image,
+            description: watch.description,
+            id: watch.id
+        })
     }
 
     handleNameChange = (e) => {
@@ -38,10 +50,20 @@ export default class DetailPage extends Component {
         this.setState({description: e.target.value});
     }
 
+    handleBrandChange = (e) => {
+        this.setState({ brand_id: Number(e.target.value) });
+    }
+
     handleSubmit = async (e) => {
         e.preventDefault();
         await updateItem(this.props.match.params.watchId, this.state);
         this.props.history.push('/watches');
+    }
+
+
+    handleDelete = (e) => {
+        e.preventDefault();
+        await deleteItem(this.props.match.params.watchId)
     }
 
     render() {
@@ -81,7 +103,8 @@ export default class DetailPage extends Component {
                         }
                     </select>
                     
-                    <button>Update Watch</button>
+                    <button onClick={this.handleDelete}>Delete Watch</button>
+                    <button onClick={this.handleSubmit}>Update Watch</button>
                 </form>
             </div>
         )
